@@ -1,0 +1,10 @@
+#N canvas 567 100 450 300 10;
+#X obj 68 49 netreceive 3000;
+#X obj 68 70 route 0 1 2;
+#X obj 68 136 print pulse;
+#X obj 89 114 print bpm;
+#X obj 110 92 print pdtest;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 1 2 4 0;

@@ -112,6 +112,6 @@ def loop():
     delay(2)
 
 def sendToPD(self, channel, msg, port):
-    os.system("echo '" + str(channel) + " " + str(msg) +"' | pdsend " + str(port))
+    os.system("echo '" + str(channel) + " " + str(msg) +";' | pdsend " + str(port))
 
 run(setup, loop)
