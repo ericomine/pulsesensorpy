@@ -24,23 +24,30 @@ led0_0 = 'echo 0 > /sys/class/leds/beaglebone::usr0/brightness'
 led1_1 = 'echo 1 > /sys/class/leds/beaglebone::usr1/brightness'
 led1_0 = 'echo 0 > /sys/class/leds/beaglebone::usr1/brightness'
 testLed = False
+pdTest = 0
 
 def setup():
     pass
 
 def loop():
-    # Força led1 a piscar a cada loop.
+    # Sinais para teste
     if testLed:
         os.system(led1_0)
         testLed = False
     else:
         os.system(led1_1)
         testLed = True
+    if pdTest == 100:
+        pdTest = 0
+    else:
+        pdTest += 1
+    sendToPD(pdTest)
+
     
     x = ain0.read()                             # Reads AnalogPin 1
-    sendToPD('0 ' + str(x), 3000)               # Sends to PD
+    sendToPD(0, x, 3000)               # Sends to PD
     if QS:
-        sendToPD('1 ' + str(BPM), 3000)         # If there is heartbeat, send to PD
+        sendToPD(1, BPM, 3000)         # If there is heartbeat, send to PD
         QS = False          
     
     sampleCounter += 2
@@ -102,9 +109,9 @@ def loop():
         firstBeat = True                        # set these to avoid noise
         secondBeat = False                      # when we get the heartbeat back
         
-    delay(200)
+    delay(2)
 
-def sendToPD(self, message, port):
-    os.system("echo '" + message +"' | pdsend " + str(port))
+def sendToPD(self, channel, msg, port):
+    os.system("echo '" + str(channel) + " " + str(msg) +"' | pdsend " + str(port))
 
 run(setup, loop)
