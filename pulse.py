@@ -1,7 +1,7 @@
 import os
 from time import sleep
 
-def sendToPD(self, channel, msg, port):
+def sendToPD(channel, msg, port):
     os.system("echo '" + str(channel) + " " + str(msg) +";' | pdsend " + str(port))
 
 class Looper():
