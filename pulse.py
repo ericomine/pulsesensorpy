@@ -44,7 +44,7 @@ class Looper():
             self.pdTest = 0
         else:
             self.pdTest += 1
-        sendToPD(self.pdTest)
+        sendToPD(2, self.pdTest, 3000)
     
         
         self.x = self.ain0.read()                             # Reads AnalogPin 1
