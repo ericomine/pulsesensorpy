@@ -25,10 +25,10 @@ class Looper():
         self.Pulse = False           # flag indicating pulse
             
         self.ain0 = file("/sys/devices/ocp.3/helper.15/AIN0")
-        self.led0_1 = 'echo 1 > /sys/class/leds/beaglebone::usr0/brightness'
-        self.led0_0 = 'echo 0 > /sys/class/leds/beaglebone::usr0/brightness'
-        self.led1_1 = 'echo 1 > /sys/class/leds/beaglebone::usr1/brightness'
-        self.led1_0 = 'echo 0 > /sys/class/leds/beaglebone::usr1/brightness'
+        self.led0_1 = 'echo 1 > /sys/class/leds/beaglebone:\green\:usr1/brightness'
+        self.led0_0 = 'echo 0 > /sys/class/leds/beaglebone:\green\:usr1/brightness'
+        self.led1_1 = 'echo 1 > /sys/class/leds/beaglebone:\green\:usr3/brightness'
+        self.led1_0 = 'echo 0 > /sys/class/leds/beaglebone:\green\:usr3/brightness'
         self.testLed = False
         self.pdTest = 0
     
