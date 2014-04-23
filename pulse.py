@@ -18,7 +18,7 @@ firstBeat = True        # used to seed rate array so we startup with reasonable 
 secondBeat = False      # used to seed rate array so we startup with reasonable BPM
 Pulse = False           # flag indicating pulse
 
-ain0 = file("/sys/bus/platform/devices/tsc/ain1")
+ain0 = file("/sys/devices/ocp.3/helper.15/AIN0")
 led0_1 = 'echo 1 > /sys/class/leds/beaglebone::usr0/brightness'
 led0_0 = 'echo 0 > /sys/class/leds/beaglebone::usr0/brightness'
 led1_1 = 'echo 1 > /sys/class/leds/beaglebone::usr1/brightness'
