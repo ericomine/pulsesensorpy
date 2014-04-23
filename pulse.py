@@ -1,5 +1,5 @@
 import os
-from bbio import *
+from time import sleep
 
 x = 0                   # holds the incoming raw data
 BPM = 0                 # used to hold the pulse rate
@@ -26,8 +26,9 @@ led1_0 = 'echo 0 > /sys/class/leds/beaglebone::usr1/brightness'
 testLed = False
 pdTest = 0
 
-def setup():
-    pass
+def main():
+    while True:
+        loop()
 
 def loop():
     # Sinais para teste
@@ -109,9 +110,10 @@ def loop():
         firstBeat = True                        # set these to avoid noise
         secondBeat = False                      # when we get the heartbeat back
         
-    delay(2)
+    sleep(2.0/1000.0)
 
 def sendToPD(self, channel, msg, port):
     os.system("echo '" + str(channel) + " " + str(msg) +";' | pdsend " + str(port))
 
-run(setup, loop)
+if __name__ == "__main__":
+    main()
